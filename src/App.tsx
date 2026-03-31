@@ -1,4 +1,3 @@
-import { ComponentDemo } from "./ComponentDemo";
 import "./App.css";
 import { NoteAppDemo } from "./NoteAppDemo";
 

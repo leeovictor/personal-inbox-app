@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Select, Stats, StatsGroup, TrustedBy } from './components';
+import { Button, Card, Select, TrustedBy } from './components';
 
 export const ComponentDemo: React.FC = () => {
   const [selectedAssignee, setSelectedAssignee] = useState<string>('arlene');

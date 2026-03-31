@@ -1,7 +1,35 @@
-import React from 'react';
-import { Button, Card } from './components';
+import React, { useState } from 'react';
+import { Button, Card, Select, Stats, StatsGroup, TrustedBy } from './components';
 
 export const ComponentDemo: React.FC = () => {
+  const [selectedAssignee, setSelectedAssignee] = useState<string>('arlene');
+  const [selectedPriority, setSelectedPriority] = useState<string>('medium');
+  const [selectedStatus, setSelectedStatus] = useState<string>('open');
+
+  const assigneeOptions = [
+    { value: 'arlene', label: 'Arlene Mccoy' },
+    { value: 'wade', label: 'Wade Cooper' },
+    { value: 'justin', label: 'Justin Harley' },
+    { value: 'devon', label: 'Devon Webb' },
+    { value: 'tom', label: 'Tom Cook' },
+    { value: 'tanya', label: 'Tanya Fox' },
+    { value: 'hellen', label: 'Hellen Schmidt' },
+    { value: 'caroline', label: 'Caroline Schultz' },
+  ];
+
+  const priorityOptions = [
+    { value: 'low', label: 'Low' },
+    { value: 'medium', label: 'Medium' },
+    { value: 'high', label: 'High' },
+    { value: 'urgent', label: 'Urgent' },
+  ];
+
+  const statusOptions = [
+    { value: 'open', label: 'Open' },
+    { value: 'in-progress', label: 'In Progress' },
+    { value: 'closed', label: 'Closed' },
+    { value: 'on-hold', label: 'On Hold' },
+  ];
   return (
     <div className="min-h-screen bg-gray-900 px-4 py-8">
       <div className="max-w-6xl mx-auto space-y-12">
@@ -10,6 +38,9 @@ export const ComponentDemo: React.FC = () => {
           <h1 className="text-3xl font-bold text-white">Design System</h1>
           <p className="text-gray-400">Button and Card components preview</p>
         </div>
+
+        {/* TrustedBy Component */}
+        <TrustedBy />
 
         {/* Button Variants */}
         <div className="space-y-4">
@@ -144,6 +175,86 @@ export const ComponentDemo: React.FC = () => {
                 Cancel
               </Button>
             </Card.Footer>
+          </Card>
+        </div>
+        
+        <Select
+            label="Selecione um nome"
+            options={[{
+              value: 'arlene',
+              label: 'Arlene Mccoy',
+            }, {
+              value: 'wade',
+              label: 'Wade Cooper',
+            }]}
+            value={selectedAssignee}
+            onChange={setSelectedAssignee}
+            placeholder="Escolha alguém..."
+          />
+
+        {/* Select Component */}
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold text-white">Select Component</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Assignee Select */}
+            <Card>
+              <Card.Content className="space-y-3">
+                <Select
+                  label="Assigned to"
+                  options={assigneeOptions}
+                  value={selectedAssignee}
+                  onChange={setSelectedAssignee}
+                  placeholder="Choose someone..."
+                />
+              </Card.Content>
+            </Card>
+
+            {/* Priority Select */}
+            <Card>
+              <Card.Content className="space-y-3">
+                <Select
+                  label="Priority"
+                  options={priorityOptions}
+                  value={selectedPriority}
+                  onChange={setSelectedPriority}
+                  placeholder="Select priority..."
+                />
+              </Card.Content>
+            </Card>
+
+            {/* Status Select */}
+            <Card>
+              <Card.Content className="space-y-3">
+                <Select
+                  label="Status"
+                  options={statusOptions}
+                  value={selectedStatus}
+                  onChange={setSelectedStatus}
+                  placeholder="Select status..."
+                />
+              </Card.Content>
+            </Card>
+          </div>
+
+          {/* Display Selected Values */}
+          <Card>
+            <Card.Header title="Selected Values" />
+            <Card.Content>
+              <div className="space-y-2 text-sm text-gray-300">
+                <p>
+                  <span className="text-gray-400">Assigned to:</span>{' '}
+                  {assigneeOptions.find((opt) => opt.value === selectedAssignee)?.label}
+                </p>
+                <p>
+                  <span className="text-gray-400">Priority:</span>{' '}
+                  {priorityOptions.find((opt) => opt.value === selectedPriority)?.label}
+                </p>
+                <p>
+                  <span className="text-gray-400">Status:</span>{' '}
+                  {statusOptions.find((opt) => opt.value === selectedStatus)?.label}
+                </p>
+              </div>
+            </Card.Content>
           </Card>
         </div>
       </div>

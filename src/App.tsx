@@ -1,8 +1,9 @@
 import { ComponentDemo } from "./ComponentDemo";
 import "./App.css";
+import { NoteAppDemo } from "./NoteAppDemo";
 
 function App() {
-  return <ComponentDemo />;
+  return <NoteAppDemo />;
 }
 
 export default App;
